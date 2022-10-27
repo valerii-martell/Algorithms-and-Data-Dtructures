@@ -9,6 +9,7 @@ import hanoi
 import heap
 import palindrome
 import percentile
+import search
 import sort
 import dividers
 import wave
@@ -16,6 +17,7 @@ import random
 import bst_recursive as bstr
 from bst_iterative import BST
 from graphs import Graph
+from search import binary_search
 
 # unsorted_list = list(random.randint(0, 100) for _ in range(0, 10))
 unsorted_list = list(random.sample(range(0, 100), 10))
@@ -243,7 +245,6 @@ if __name__ == '__main__':
 
     # primes = [311, 173, 73, 31, 17, 11, 7, 3]
 
-
     # print(dynamic.unique_prime_combos("31173"))
 
     # primes = [311,173,73,31,17,11,7,3]
@@ -279,13 +280,7 @@ if __name__ == '__main__':
     # for combo in combos("733"):
     #     print(combo)
 
-    # print(dynamic.number_of_all_combos(3))
-    # print(dynamic.all_combos(4))
-    # print(dynamic.all_unique_combos(4))
-
-    # print(sort.sort_logs(["def1 1 2 4 5", "let1 art zero", "def3 2 0 9 8", "let2 art can"]))
-
-    # print(number_of_unique_combos(6))
+    #
 
     # print([1]+[2,3])
     # print(combos("31173"))
@@ -321,15 +316,31 @@ if __name__ == '__main__':
     # heap.delete_at(0)
     # print(heap)
 
-    for j in range(1, 4):
-        for i in itertools.combinations([1, 2, 3], j):
-            print(i)
+    # for j in range(1, 4):
+    #    for i in itertools.combinations([1, 2, 3], j):
+    #        print(i)
 
-            # dynamic.all_combos_from_list([1,2,3,4,5,6])
-    # print(dynamic.permutations([1, 2, 3]))
+    print("All combos:")
+    print(dynamic.number_of_all_combos(4))
+    print(dynamic.all_combos(4))
 
+    print("All unique combos:")
+    print(dynamic.number_of_unique_combos(4))
+    print(dynamic.all_unique_combos(4))
 
-    print(list(itertools.chain.from_iterable(
-        itertools.combinations([1, 2, 3], i+1) for i in range(len([1, 2, 3]) + 1))))
+    # print(sort.sort_logs(["def1 1 2 4 5", "let1 art zero", "def3 2 0 9 8", "let2 art can"]))
+
+    print("All combos from list:")
+    print(dynamic.all_combos_from_list([1, 2, 3]))
+
+    print("Permutations from list:")
+    print(dynamic.permutations([1, 2, 3]))
+
+    # print(list(itertools.chain.from_iterable(
+    #    itertools.combinations([1, 2, 3], i+1) for i in range(len([1, 2, 3]) + 1))))
+
+    arr = [1, 2, 3, 4]
+    print(search.binary_search(arr, 4, 0, len(arr) - 1))
+    print(search.binary_search(arr, 3, 0, len(arr) - 1))
 
     pass

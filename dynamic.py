@@ -2,11 +2,11 @@ import math
 
 
 def rabbit_moves(stairs_number, max_jump):
-    moves = [0] * (stairs_number+1)
+    moves = [0] * (stairs_number + 1)
     moves[0] = 1
 
-    for i in range(1, stairs_number+1):
-        start = max(0, i-max_jump)
+    for i in range(1, stairs_number + 1):
+        start = max(0, i - max_jump)
         for j in range(start, i):
             moves[i] += moves[j]
 
@@ -14,12 +14,12 @@ def rabbit_moves(stairs_number, max_jump):
 
 
 def coins(denominations, n):
-    result = [0 for _ in range(n+1)]
+    result = [0 for _ in range(n + 1)]
     result[0] = 1
 
     for i in range(len(denominations)):
-        for j in range(denominations[i], n+1):
-            result[j] += result[j-denominations[i]]
+        for j in range(denominations[i], n + 1):
+            result[j] += result[j - denominations[i]]
 
     return result[n]
 
@@ -82,14 +82,13 @@ def update_string(str1, str2):
             # from three specified operation
             else:
                 dp[i % 2][j] = (1 + min(dp[(i - 1) % 2][j],
-                                    min(dp[i % 2][j - 1],
-                                        dp[(i - 1) % 2][j - 1])))
-
+                                        min(dp[i % 2][j - 1],
+                                            dp[(i - 1) % 2][j - 1])))
 
         return dp[len2 % 2][len1]
 
-def update_string2(str1, str2):
 
+def update_string2(str1, str2):
     m = len(str1)
     n = len(str2)
 
@@ -129,30 +128,20 @@ def combinations(n):
     result = []
 
     result.append([n])
+
     def _combinations(n, result):
         result.append([n - 1, 1])
-        _combinations(n-1, )
+        _combinations(n - 1, )
 
-    arr = [1]*n
+    arr = [1] * n
 
     for i in range(1, -1):
-
         result.append([n])
-        result.append([n-1, 1])
+        result.append([n - 1, 1])
         combinations()
         pass
 
     return result
-
-
-def number_of_all_combos(number):
-    if number <= 1:
-        return 1
-    else:
-        res = 0
-        for i in range(1, number+1):
-            res += number_of_all_combos(number-i)
-        return res
 
 
 # def all_combos(number):
@@ -181,13 +170,23 @@ def number_of_all_combos(number):
 #         return result
 
 
+def number_of_all_combos(number):
+    if number <= 1:
+        return 1
+    else:
+        res = 0
+        for i in range(1, number + 1):
+            res += number_of_all_combos(number - i)
+        return res
+
+
 def all_combos(number, prefix=[]):
     if number == 0:
         return [prefix]
     else:
         result = []
-        for i in range(1, number+1):
-            result += all_combos(number-i, prefix + [i])
+        for i in range(1, number + 1):
+            result += all_combos(number - i, prefix + [i])
         return result
 
 
@@ -210,8 +209,8 @@ def all_unique_combos(number, prefix=[], max=None):
         return [prefix]
     else:
         result = []
-        for i in range(1, min(max,number)+1):
-            result += all_unique_combos(number-i, prefix + [i], i)
+        for i in range(1, min(max, number) + 1):
+            result += all_unique_combos(number - i, prefix + [i], i)
         return result
 
 
@@ -238,19 +237,18 @@ def permutations(lst, prefix=[]):
     else:
         result = []
         for i in range(len(lst)):
-            result.append(permutations(lst[:i]+lst[i+1:], prefix+[lst[i]]))
+            result.append(permutations(lst[:i] + lst[i + 1:], prefix + [lst[i]]))
         return result
 
 
 def unique_prime_combos(s, prime_range=1000):
-
     def _sieve(prime_range):
         sieve = [True for _ in range(prime_range + 1)]
         sieve[0], sieve[1] = False, False
 
         for i in range(2, math.floor(math.sqrt(prime_range))):
             if sieve[i]:
-                for j in range(i**2, prime_range+1, i):
+                for j in range(i ** 2, prime_range + 1, i):
                     sieve[j] = False
 
         result = []
